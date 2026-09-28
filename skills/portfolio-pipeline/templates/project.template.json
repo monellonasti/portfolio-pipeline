@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": null,
+  "updatedAt": null,
+  "language": "it",
+  "project": {
+    "name": null,
+    "slug": null,
+    "client": null,
+    "industry": [],
+    "productType": { "primary": null, "secondary": [] },
+    "targetUsers": [],
+    "status": "unknown",
+    "year": null,
+    "timeline": null,
+    "role": [],
+    "urls": { "live": null, "demo": null, "repository": null }
+  },
+  "summary": { "oneLine": null, "card": null, "hero": null, "overview": null },
+  "stack": [],
+  "features": [],
+  "differentiators": [],
+  "engineeringHighlights": [],
+  "screenshots": [],
+  "tags": [],
+  "verification": {
+    "runtimeVerified": false,
+    "reviewed": false,
+    "approvedForPublish": false,
+    "evidenceCount": 0,
+    "confirmedEvidenceCount": 0,
+    "unverifiedClaims": []
+  },
+  "missingInformation": [],
+  "publication": { "published": false, "target": null, "publishedAt": null }
+}

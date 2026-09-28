@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: Digifluss Portfolio\n"
+
+msgid "Altri progetti"
+msgstr "Autres projets"
+
+msgid "Analizziamo il tuo flusso"
+msgstr "Analysons votre flux"
+
+msgid "Anno"
+msgstr "Année"
+
+msgid "Capacità chiave"
+msgstr "Capacités clés"
+
+msgid "Cliente"
+msgstr "Client"
+
+msgid "Cliente / Settore"
+msgstr "Client / Secteur"
+
+msgid "Cosa sa fare, e perché conta."
+msgstr "Ce qu'il sait faire, et pourquoi ça compte."
+
+msgid "Cosa vede chi lo usa."
+msgstr "Ce que voient ceux qui l'utilisent."
+
+msgid "Dentro l'ingegneria"
+msgstr "Dans l'ingénierie"
+
+msgid "Design e identità visiva"
+msgstr "Design et identité visuelle"
+
+msgid "Galleria"
+msgstr "Galerie"
+
+msgid "I problemi interessanti, e come li abbiamo risolti."
+msgstr "Les problèmes intéressants, et comment nous les avons résolus."
+
+msgid "Il prodotto"
+msgstr "Le produit"
+
+msgid "Il risultato"
+msgstr "Le résultat"
+
+msgid "Iniziamo"
+msgstr "Commençons"
+
+msgid "Integrazioni"
+msgstr "Intégrations"
+
+msgid "L'approccio"
+msgstr "L'approche"
+
+msgid "La sfida"
+msgstr "Le défi"
+
+msgid "Obiettivo"
+msgstr "Objectif"
+
+msgid "Ogni scelta visiva ha un perché."
+msgstr "Chaque choix visuel a une raison."
+
+msgid "Panoramica"
+msgstr "Vue d'ensemble"
+
+msgid "Parliamone"
+msgstr "Parlons-en"
+
+msgid "Partiamo da una lettura del tuo flusso. Senza impegno."
+msgstr "Nous partons d'une lecture de votre flux. Sans engagement."
+
+msgid "Partiamo dalla tua realtà, non da un template. Una prima call basta a capire dove c'è valore."
+msgstr "Nous partons de votre réalité, pas d'un template. Un premier échange suffit à voir où est la valeur."
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Portfolio · Sviluppo web & software"
+msgstr "Portfolio · Développement web & logiciel"
+
+msgid "Prodotto"
+msgstr "Produit"
+
+msgid "Progetti del portfolio"
+msgstr "Projets du portfolio"
+
+msgid "Progetti, non semplici siti."
+msgstr "Des projets, pas de simples sites."
+
+msgid "Progetto"
+msgstr "Projet"
+
+msgid "Progetto %1$d: %2$s"
+msgstr "Projet %1$d : %2$s"
+
+msgid "Progetto precedente"
+msgstr "Projet précédent"
+
+msgid "Progetto successivo"
+msgstr "Projet suivant"
+
+msgid "Ruolo"
+msgstr "Rôle"
+
+msgid "Settore"
+msgstr "Secteur"
+
+msgid "Sfida"
+msgstr "Défi"
+
+msgid "Soluzione"
+msgstr "Solution"
+
+msgid "Strategia, sviluppo e AI per trasformare strumenti isolati in ecosistemi digitali fluidi. Una selezione di casi recenti."
+msgstr "Stratégie, développement et IA pour transformer des outils isolés en écosystèmes numériques fluides. Une sélection de cas récents."
+
+msgid "Tempi"
+msgstr "Délais"
+
+msgid "Trascina · ← →"
+msgstr "Glissez · ← →"
+
+msgid "Tutti i progetti"
+msgstr "Tous les projets"
+
+msgid "Un progetto come questo, anche per te?"
+msgstr "Un projet comme celui-ci, pour vous aussi ?"
+
+msgid "Vai al progetto %d"
+msgstr "Aller au projet %d"
+
+msgid "Vai al sito live"
+msgstr "Voir le site en ligne"
+
+msgid "Vedi il caso di studio"
+msgstr "Voir l'étude de cas"
+
+msgid "Vedi tutti i progetti"
+msgstr "Voir tous les projets"
+
+msgid "Vuoi un progetto come questi?"
+msgstr "Envie d'un projet comme ceux-ci ?"
+
+msgid "architettura"
+msgstr "architecture"
+
+msgid "carosello"
+msgstr "carrousel"
+
+msgid "come sta in piedi"
+msgstr "comment ça tient debout"
+

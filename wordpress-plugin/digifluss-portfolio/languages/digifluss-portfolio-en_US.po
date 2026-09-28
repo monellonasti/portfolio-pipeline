@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: Digifluss Portfolio\n"
+
+msgid "Altri progetti"
+msgstr "More projects"
+
+msgid "Analizziamo il tuo flusso"
+msgstr "Let's analyze your flow"
+
+msgid "Anno"
+msgstr "Year"
+
+msgid "Capacità chiave"
+msgstr "Key capabilities"
+
+msgid "Cliente"
+msgstr "Client"
+
+msgid "Cliente / Settore"
+msgstr "Client / Industry"
+
+msgid "Cosa sa fare, e perché conta."
+msgstr "What it can do, and why it matters."
+
+msgid "Cosa vede chi lo usa."
+msgstr "What users actually see."
+
+msgid "Dentro l'ingegneria"
+msgstr "Inside the engineering"
+
+msgid "Design e identità visiva"
+msgstr "Design & visual identity"
+
+msgid "Galleria"
+msgstr "Gallery"
+
+msgid "I problemi interessanti, e come li abbiamo risolti."
+msgstr "The interesting problems, and how we solved them."
+
+msgid "Il prodotto"
+msgstr "The product"
+
+msgid "Il risultato"
+msgstr "The result"
+
+msgid "Iniziamo"
+msgstr "Let's start"
+
+msgid "Integrazioni"
+msgstr "Integrations"
+
+msgid "L'approccio"
+msgstr "The approach"
+
+msgid "La sfida"
+msgstr "The challenge"
+
+msgid "Obiettivo"
+msgstr "Goal"
+
+msgid "Ogni scelta visiva ha un perché."
+msgstr "Every visual choice has a reason."
+
+msgid "Panoramica"
+msgstr "Overview"
+
+msgid "Parliamone"
+msgstr "Let's talk"
+
+msgid "Partiamo da una lettura del tuo flusso. Senza impegno."
+msgstr "We start with a reading of your flow. No strings attached."
+
+msgid "Partiamo dalla tua realtà, non da un template. Una prima call basta a capire dove c'è valore."
+msgstr "We start from your business, not from a template. A first call is enough to see where the value is."
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Portfolio · Sviluppo web & software"
+msgstr "Portfolio · Web & software development"
+
+msgid "Prodotto"
+msgstr "Product"
+
+msgid "Progetti del portfolio"
+msgstr "Portfolio projects"
+
+msgid "Progetti, non semplici siti."
+msgstr "Projects, not just websites."
+
+msgid "Progetto"
+msgstr "Project"
+
+msgid "Progetto %1$d: %2$s"
+msgstr "Project %1$d: %2$s"
+
+msgid "Progetto precedente"
+msgstr "Previous project"
+
+msgid "Progetto successivo"
+msgstr "Next project"
+
+msgid "Ruolo"
+msgstr "Role"
+
+msgid "Settore"
+msgstr "Industry"
+
+msgid "Sfida"
+msgstr "Challenge"
+
+msgid "Soluzione"
+msgstr "Solution"
+
+msgid "Strategia, sviluppo e AI per trasformare strumenti isolati in ecosistemi digitali fluidi. Una selezione di casi recenti."
+msgstr "Strategy, development and AI to turn isolated tools into fluid digital ecosystems. A selection of recent work."
+
+msgid "Tempi"
+msgstr "Timeline"
+
+msgid "Trascina · ← →"
+msgstr "Drag · ← →"
+
+msgid "Tutti i progetti"
+msgstr "All projects"
+
+msgid "Un progetto come questo, anche per te?"
+msgstr "A project like this, for you too?"
+
+msgid "Vai al progetto %d"
+msgstr "Go to project %d"
+
+msgid "Vai al sito live"
+msgstr "Visit the live site"
+
+msgid "Vedi il caso di studio"
+msgstr "View the case study"
+
+msgid "Vedi tutti i progetti"
+msgstr "View all projects"
+
+msgid "Vuoi un progetto come questi?"
+msgstr "Want a project like these?"
+
+msgid "architettura"
+msgstr "architecture"
+
+msgid "carosello"
+msgstr "carousel"
+
+msgid "come sta in piedi"
+msgstr "how it holds together"
+
