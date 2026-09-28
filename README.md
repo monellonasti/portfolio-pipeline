@@ -30,6 +30,8 @@ We did not want to type those seven messages again for every project, so each on
 
 The next day the first automated runs came out thinner than the hand-made case study. The fix was the same move: the hand-made case study became `quality-bar.md`, the minimum every run is checked against (15+ evidence records, mechanisms named with file paths, counted numbers, close-up shots).
 
+The dash rule had one more place to reach. On 28 September we noticed that the translations put the dashes back (28 in the English version of Look And Feel Better, 40 in Frequency School's), because the translation prompt did not carry our writing rules. Since plugin 1.11.7 it does, and all 15 live translations were redone: not one dash is left.
+
 ## Before and after
 
 | | Before | After |
@@ -68,7 +70,7 @@ flowchart LR
 
 **`/portfolio-publish`** refuses to run without that approval. It studies the target site's content model and maps the package onto it instead of building a parallel system. For our WordPress site it produces an import bundle: the Markdown file, the images at the sizes the theme uses, and the short list of fields that stay manual.
 
-**The WordPress plugin** reads the Markdown file in the browser and fills 18 fields plus the repeatable blocks (design, capabilities, technical deep dives). Values still marked `[to confirm]` are skipped on purpose. A translate button then sends the case study to the Claude API once per language, with a progress bar and a stop button. The model has to return the same JSON structure, keys it invents are discarded, and a language goes live only when every Italian field has a complete translation. The calls start from the server, so the key is never exposed to the site's visitors.
+**The WordPress plugin** reads the Markdown file in the browser and fills 18 fields plus the repeatable blocks (design, capabilities, technical deep dives). Values still marked `[to confirm]` are skipped on purpose. A translate button then sends the case study to the Claude API once per language, with a progress bar and a stop button. The request uses structured outputs, with a JSON schema built from the case study's own fields, so the answer always parses and keeps exactly the Italian keys. The translation prompt carries the same no-dash rule as the Italian copy, and a language goes live only when every Italian field has a complete translation. The calls start from the server, so the key is never exposed to the site's visitors.
 
 **`/portfolio-pipeline`** runs the steps in order through five checkpoints and keeps its state in `.portfolio/pipeline.json`, so an interrupted run continues from its last step instead of starting over.
 
@@ -87,11 +89,11 @@ flowchart LR
 
 ## Results so far
 
-Between 9 August and 23 September 2026:
+Between 9 August and 28 September 2026:
 
 - **8 projects** analyzed by the pipeline, with **424 numbered evidence records** in total (from 26 to 92 per project).
 - **3 packages approved** by the independent review: Frequency School (91/100), an in-house Shopify app (88/100) and TOPTOUR Portugal (69/100 on the first pass, approved once its fixes were in and we had confirmed the live site).
-- **Live on digifluss.com:** [Frequency School](https://digifluss.com/progetti/frequency-school/) and [TOPTOUR Portugal](https://digifluss.com/progetti/toptour-portugal/), in Italian so far, and the hand-made reference, [Look And Feel Better](https://digifluss.com/progetti/look-and-feel-better/), in six languages.
+- **Live on digifluss.com in six languages:** [Frequency School](https://digifluss.com/progetti/frequency-school/), [TOPTOUR Portugal](https://digifluss.com/progetti/toptour-portugal/) and the hand-made reference, [Look And Feel Better](https://digifluss.com/progetti/look-and-feel-better/). The last translation run took 15 calls and 26 minutes, all of them right on the first call.
 
 ## Repository layout
 

@@ -4,7 +4,7 @@ Tags: portfolio, carousel, custom post type, shortcode
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.11.6
+Stable tag: 1.11.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,19 @@ Sì. L'aspetto resta coerente grazie ai fallback nel CSS; i colori del brand
 si possono comunque sovrascrivere definendo le variabili --df-* nel tuo tema.
 
 == Changelog ==
+
+= 1.11.7 =
+* Traduzione AI con output strutturato: la risposta segue uno schema
+  ricavato dai campi del progetto, quindi il JSON è sempre valido anche
+  quando il testo cita frasi tra virgolette (prima alcune lingue venivano
+  scartate con "Traduzione non valida").
+* Il prompt di traduzione vieta il trattino lungo e il trattino medio,
+  come le regole di scrittura dei testi italiani.
+* Margini adatti ai case study lunghi: risposta fino a 16.000 token,
+  timeout di 300 secondi; messaggi chiari se la risposta viene troncata o
+  rifiutata.
+* La costante DIGIFLUSS_PORTFOLIO_VERSION torna allineata alla versione
+  del plugin (era ferma alla 1.11.3).
 
 = 1.11.6 =
 * Titolo SERP dei casi studio: accanto al nome del progetto compare la

@@ -78,16 +78,29 @@ Counted on 28 September 2026 from the `.portfolio/` folders.
 
 | Project | Evidence records | Review | Live on digifluss.com |
 | --- | --- | --- | --- |
-| Frequency School | 92 | 91/100, approved | yes, Italian |
-| TOPTOUR Portugal | 88 | 69/100 on the first pass; approved on 22 Sep 2026, after its fixes and our confirmation of the live site | yes, Italian |
+| Frequency School | 92 | 91/100, approved | yes, six languages |
+| TOPTOUR Portugal | 88 | 69/100 on the first pass; approved on 22 Sep 2026, after its fixes and our confirmation of the live site | yes, six languages |
 | In-house Shopify app | 44 | 88/100, approved | not yet |
 | Five other projects | 26, 35, 43, 46, 50 | not reviewed yet | no |
 | **Total** | **424** | | |
 
 The hand-made reference, Look And Feel Better, predates the pipeline and is live in six languages.
 
+## Translations (28 September 2026)
+
+| Run | Plugin | Calls | Right on the first call | Em and en dashes in the saved translations |
+| --- | --- | --- | --- | --- |
+| Frequency School and TOPTOUR Portugal | 1.11.6 | 10 | 8 | Frequency School: 40 en, 49 de, 27 fr, 2 es, 2 pt. TOPTOUR: 11 en, 21 de, 5 fr, 0 es, 0 pt |
+| All three case studies | 1.11.7 | 15 | 15 | 0 in every language |
+
+- **The two failures on 1.11.6.** The model copied straight quotes from the Italian ("doposcuola Casalnuovo") without escaping them, so its JSON did not parse and the plugin rejected the language. An extra prompt instruction did not help: both retries failed again. The two answers were repaired (7 and 14 quote fixes, each checked, same structure as the Italian fields) and saved.
+- **The dashes.** The Italian copy has none, because the writing rules forbid them, but the translation prompt did not say so. Look And Feel Better, translated in August, had 28 in English, 20 in German, 16 in French, 15 in Spanish and 17 in Portuguese.
+- **Plugin 1.11.7** asks the API for structured output (a JSON schema built from the case study's fields) and carries the no-dash rule. Per language: 71 to 168 s; 26 min for all 15.
+- **Checked on the live site** after the cache purge: 18 pages (3 case studies in 6 languages) answer 200, list six languages plus x-default in hreflang and contain no em or en dash in the page body.
+- **Not translated:** the post title, which the plugin treats as the project name (for Frequency School it also carries an Italian descriptor, so its `<title>` stays Italian), and the gallery captions, which come from the media library.
+
 ## Caveats
 
 - The before and after runs are different projects, and the first one also designed the method. The times are indicative, not a benchmark.
 - The 39 minutes are mostly machine time. Our input was one message plus reading the result; we did not time the reading.
-- Translations run on request from wp-admin. On 28 September 2026 Look And Feel Better is live in six languages, the other two case studies in Italian only.
+- Translations run on request from wp-admin. Since 28 September 2026 all three live case studies are in six languages.

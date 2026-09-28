@@ -30,6 +30,8 @@ Non volevamo riscrivere quei sette messaggi per ogni progetto, così ognuno è e
 
 Il giorno dopo i primi case study automatici sono usciti più sottili di quello fatto a mano. La soluzione è stata la stessa: il case study fatto a mano è diventato `quality-bar.md`, il livello minimo su cui ogni esecuzione viene controllata (almeno 15 evidenze, meccanismi descritti con i percorsi dei file, numeri contati, scatti ravvicinati).
 
+La regola dei trattini doveva arrivare in un ultimo punto. Il 28 settembre ci siamo accorti che le traduzioni rimettevano i trattini (28 nella versione inglese di Look And Feel Better, 40 in quella di Frequency School), perché il prompt di traduzione non conteneva le nostre regole di scrittura. Dal plugin 1.11.7 le contiene, e le 15 traduzioni online sono state rifatte: non è rimasto nemmeno un trattino.
+
 ## Prima e dopo
 
 | | Prima | Dopo |
@@ -68,7 +70,7 @@ flowchart LR
 
 **`/portfolio-publish`** non parte senza quell'approvazione. Studia il modello dei contenuti del sito di destinazione e ci adatta il pacchetto invece di costruire un sistema parallelo. Per il nostro sito WordPress produce un pacchetto di importazione: il file Markdown, le immagini nelle misure usate dal tema e la breve lista dei campi che restano manuali.
 
-**Il plugin WordPress** legge il file Markdown direttamente nel browser e compila 18 campi più i blocchi ripetibili (design, capacità, approfondimenti tecnici). I valori ancora segnati `[da confermare]` vengono scartati apposta. Un pulsante di traduzione invia poi il case study all'API di Claude una volta per lingua, con barra di avanzamento e pulsante di stop. Il modello deve restituire la stessa struttura JSON, le chiavi che inventa vengono scartate e una lingua va online solo quando ogni campo italiano ha una traduzione completa. Le chiamate partono dal server, quindi la chiave non viene mai esposta ai visitatori del sito.
+**Il plugin WordPress** legge il file Markdown direttamente nel browser e compila 18 campi più i blocchi ripetibili (design, capacità, approfondimenti tecnici). I valori ancora segnati `[da confermare]` vengono scartati apposta. Un pulsante di traduzione invia poi il case study all'API di Claude una volta per lingua, con barra di avanzamento e pulsante di stop. La richiesta usa l'output strutturato, con uno schema JSON ricavato dai campi del case study: la risposta è sempre leggibile e ha esattamente le chiavi italiane. Il prompt di traduzione contiene la stessa regola sui trattini dei testi italiani, e una lingua va online solo quando ogni campo italiano ha una traduzione completa. Le chiamate partono dal server, quindi la chiave non viene mai esposta ai visitatori del sito.
 
 **`/portfolio-pipeline`** esegue i passaggi in ordine attraverso cinque checkpoint e tiene il suo stato in `.portfolio/pipeline.json`: un'esecuzione interrotta riprende dall'ultimo passaggio invece di ricominciare.
 
@@ -87,11 +89,11 @@ flowchart LR
 
 ## Risultati finora
 
-Tra il 9 agosto e il 23 settembre 2026:
+Tra il 9 agosto e il 28 settembre 2026:
 
 - **8 progetti** analizzati dalla pipeline, con **424 evidenze numerate** in tutto (da 26 a 92 per progetto).
 - **3 pacchetti approvati** dalla revisione indipendente: Frequency School (91/100), un'app Shopify interna (88/100) e TOPTOUR Portugal (69/100 al primo passaggio, approvato dopo le correzioni e la nostra conferma del sito definitivo).
-- **Online su digifluss.com:** [Frequency School](https://digifluss.com/progetti/frequency-school/) e [TOPTOUR Portugal](https://digifluss.com/progetti/toptour-portugal/), per ora in italiano, e il riferimento fatto a mano, [Look And Feel Better](https://digifluss.com/progetti/look-and-feel-better/), in sei lingue.
+- **Online su digifluss.com in sei lingue:** [Frequency School](https://digifluss.com/progetti/frequency-school/), [TOPTOUR Portugal](https://digifluss.com/progetti/toptour-portugal/) e il riferimento fatto a mano, [Look And Feel Better](https://digifluss.com/progetti/look-and-feel-better/). L'ultima tornata di traduzioni ha richiesto 15 chiamate e 26 minuti, tutte riuscite al primo colpo.
 
 ## Struttura del repository
 

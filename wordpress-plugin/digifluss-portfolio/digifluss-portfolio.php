@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Digifluss Portfolio
  * Description:        Portfolio a carosello — Custom Post Type "Progetti" + shortcode [digifluss_portfolio]. Integrato col tema Digifluss (auto-detect): testata, bottoni e template singolo/archivio riusano i componenti del tema. Su altri temi mantiene fallback autonomi.
- * Version:           1.11.6
+ * Version:           1.11.7
  * Author:            Digifluss
  * Author URI:        https://digifluss.it
  * Text Domain:       digifluss-portfolio
@@ -16,7 +16,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if ( ! defined( 'DIGIFLUSS_PORTFOLIO_VERSION' ) ) { define( 'DIGIFLUSS_PORTFOLIO_VERSION', '1.11.3' ); }
+if ( ! defined( 'DIGIFLUSS_PORTFOLIO_VERSION' ) ) { define( 'DIGIFLUSS_PORTFOLIO_VERSION', '1.11.7' ); }
 if ( ! defined( 'DIGIFLUSS_PORTFOLIO_URL' ) )     { define( 'DIGIFLUSS_PORTFOLIO_URL', plugin_dir_url( __FILE__ ) ); }
 if ( ! defined( 'DIGIFLUSS_PORTFOLIO_PATH' ) )    { define( 'DIGIFLUSS_PORTFOLIO_PATH', plugin_dir_path( __FILE__ ) ); }
 
@@ -1520,6 +1520,50 @@ if ( ! function_exists( 'dfp_ai_rest' ) ) {
 	add_action( 'rest_api_init', 'dfp_ai_rest' );
 }
 
+if ( ! function_exists( 'dfp_ai_translation_schema' ) ) {
+	/**
+	 * Schema JSON della risposta, ricavato dai campi italiani del progetto:
+	 * stesse chiavi, testi come stringhe, repeater come liste di oggetti con
+	 * le chiavi degli elementi. Con l'output strutturato l'API garantisce un
+	 * JSON valido: niente più risposte scartate per virgolette non escapate.
+	 */
+	function dfp_ai_translation_schema( $fields ) {
+		$props = array();
+		foreach ( $fields as $key => $value ) {
+			if ( ! is_array( $value ) ) {
+				$props[ $key ] = array( 'type' => 'string' );
+				continue;
+			}
+			$item_keys = array();
+			foreach ( $value as $item ) {
+				if ( is_array( $item ) ) {
+					$item_keys = array_merge( $item_keys, array_map( 'strval', array_keys( $item ) ) );
+				}
+			}
+			$item_keys  = array_values( array_unique( $item_keys ) );
+			$item_props = array();
+			foreach ( $item_keys as $k ) {
+				$item_props[ $k ] = array( 'type' => 'string' );
+			}
+			$props[ $key ] = array(
+				'type'  => 'array',
+				'items' => array(
+					'type'                 => 'object',
+					'properties'           => (object) $item_props,
+					'required'             => $item_keys,
+					'additionalProperties' => false,
+				),
+			);
+		}
+		return array(
+			'type'                 => 'object',
+			'properties'           => $props,
+			'required'             => array_keys( $props ),
+			'additionalProperties' => false,
+		);
+	}
+}
+
 if ( ! function_exists( 'dfp_ai_translate_post' ) ) {
 	/**
 	 * Traduce tutti i contenuti del case study in un locale e salva il
@@ -1547,24 +1591,36 @@ if ( ! function_exists( 'dfp_ai_translate_post' ) ) {
 			. 'NON tradurre: nomi propri, nomi di brand e prodotti (es. Shopify, Theme Editor, Liquid), nomi di file e di codice, prezzi, numeri, sigle tecniche. '
 			. 'Mantieni ESATTAMENTE la stessa struttura JSON, le stesse chiavi e lo stesso numero di elementi negli array. '
 			. 'Mantieni i ritorni a capo (\n) e le righe che iniziano con "- " come elenchi. '
+			. 'Punteggiatura: non usare MAI il trattino lungo (—) né il trattino medio (–), anche se la lingua di destinazione li userebbe; '
+			. 'dove serve una pausa usa una virgola, i due punti, una parentesi o una frase separata. '
+			. 'Il trattino corto (-) resta solo nelle parole composte e negli intervalli (per esempio 2-16). '
 			. 'Rispondi SOLO con il JSON tradotto, senza commenti e senza code fence.';
 
+		// L'output strutturato vincola la risposta allo schema dei campi:
+		// JSON sempre valido anche quando il testo cita frasi tra virgolette.
 		$payload = array(
-			'model'      => $o['model'],
-			'max_tokens' => 8000,
-			'system'     => $sys,
-			'messages'   => array( array( 'role' => 'user', 'content' => wp_json_encode( $fields, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) ),
+			'model'         => $o['model'],
+			'max_tokens'    => 16000,
+			'system'        => $sys,
+			'messages'      => array( array( 'role' => 'user', 'content' => wp_json_encode( $fields, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) ) ),
+			'output_config' => array(
+				'format' => array(
+					'type'   => 'json_schema',
+					'schema' => dfp_ai_translation_schema( $fields ),
+				),
+			),
 		);
 		// Sui modelli recenti il thinking consuma il budget max_tokens:
 		// effort basso lo contiene (il parametro non esiste su Haiku 4.5).
 		if ( ! preg_match( '/(haiku|-4-[015]\b|claude-3)/', $o['model'] ) ) {
-			$payload['output_config'] = array( 'effort' => 'low' );
+			$payload['output_config']['effort'] = 'low';
 		}
 
+		// Un case study lungo (20.000 caratteri) richiede fino a ~3 minuti per lingua.
 		$res = wp_remote_post(
 			'https://api.anthropic.com/v1/messages',
 			array(
-				'timeout' => 180,
+				'timeout' => 300,
 				'headers' => array(
 					'content-type'      => 'application/json',
 					'x-api-key'         => $o['api_key'],
@@ -1581,6 +1637,13 @@ if ( ! function_exists( 'dfp_ai_translate_post' ) ) {
 		if ( 200 !== $code ) {
 			$msg = isset( $json['error']['message'] ) ? $json['error']['message'] : __( 'Errore della API.', 'digifluss-portfolio' );
 			return new WP_Error( 'dfp_api', $msg, array( 'status' => $code ? $code : 502 ) );
+		}
+		$stop = isset( $json['stop_reason'] ) ? (string) $json['stop_reason'] : '';
+		if ( 'max_tokens' === $stop ) {
+			return new WP_Error( 'dfp_truncated', __( 'Traduzione interrotta: il testo supera la lunghezza massima della risposta.', 'digifluss-portfolio' ), array( 'status' => 502 ) );
+		}
+		if ( 'refusal' === $stop ) {
+			return new WP_Error( 'dfp_refusal', __( 'Il modello non ha tradotto questo contenuto. Riprova.', 'digifluss-portfolio' ), array( 'status' => 502 ) );
 		}
 
 		$text = '';
