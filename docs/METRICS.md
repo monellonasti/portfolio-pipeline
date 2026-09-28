@@ -97,7 +97,7 @@ The hand-made reference, Look And Feel Better, predates the pipeline and is live
 - **The dashes.** The Italian copy has none, because the writing rules forbid them, but the translation prompt did not say so. Look And Feel Better, translated in August, had 28 in English, 20 in German, 16 in French, 15 in Spanish and 17 in Portuguese.
 - **Plugin 1.11.7** asks the API for structured output (a JSON schema built from the case study's fields) and carries the no-dash rule. Per language: 71 to 168 s; 26 min for all 15.
 - **Checked on the live site** after the cache purge: 18 pages (3 case studies in 6 languages) answer 200, list six languages plus x-default in hreflang and contain no em or en dash in the page body.
-- **Not translated:** the post title, which the plugin treats as the project name (for Frequency School it also carries an Italian descriptor, so its `<title>` stays Italian), and the gallery captions, which come from the media library.
+- **Not translated:** the post title, which the plugin treats as the project name, and the gallery captions, which come from the media library. Frequency School's post title used to carry an Italian descriptor ("sito WordPress su misura") that stayed Italian in every language; on 28 September it was renamed to the plain project name, and the plugin now builds each language's `<title>` from the translated category (for example "Frequency School: Custom WordPress Theme").
 
 ## Caveats
 
